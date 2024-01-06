@@ -1,35 +1,38 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from "react";
+import Converter from "./components/Converter";
 
-function App() {
-  const [count, setCount] = useState(0)
-
+export default function App() {
+  const navItems = [
+    {
+      title: "Home",
+    },
+    {
+      title: "Services",
+    },
+  ];
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="max-w-7xl m-auto pb-24 px-10">
+      <div className="flex flex-col md:flex-row py-8 items-center justify-between">
+        <h5 className="text-xl font-bold">Vinay's PDF</h5>
+        <div>
+          <ul className="flex gap-10 items-center">
+            {navItems.map((data, index) => {
+              return (
+                <li
+                  key={index}
+                  className="hover:underline hover:text-red-500 cursor-pointer"
+                >
+                  {data.title}
+                </li>
+              );
+            })}
+            <button className="bg-violet-600 hover:bg-violet-800 px-8 py-2 rounded text-white">
+              Contact
+            </button>
+          </ul>
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+      <Converter />
+    </div>
+  );
 }
-
-export default App
